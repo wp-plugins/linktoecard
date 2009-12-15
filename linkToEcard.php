@@ -3,11 +3,11 @@
 Plugin Name: LinkToEcard
 Plugin URI: http://LinkToEcard.com/wordpress-plugin
 Description: Mazgalici
-Version: 1.01
+Version: 1.02
 Author: Mazgalici
 */
 
-add_action('post','linkToEcardPostText');
+
 add_filter('the_content', 'linkToEcardTheContent');
 register_activation_hook(__FILE__,'linkToEcardInstall');
 add_action('admin_menu', 'linkToEcardSettings');
@@ -15,7 +15,7 @@ add_action('admin_menu', 'linkToEcardSettings');
 
 
 function linkToEcardSettings(){
-	add_submenu_page('options-general.php','linkToEcard', 'linkToEcard', 10, __FILE__,'linkToEcardAdmin');
+	add_submenu_page('options-general.php','Link To Ecard', 'Link To Ecard', 10, __FILE__,'linkToEcardAdmin');
 }
 
 
@@ -78,6 +78,9 @@ function linkToEcardInstall(){
 	add_option('linkToEcardTextLink',$linkToEcardDefaultText);
 	add_option('linkToEcardTextEmail',$linkToEcardTextEmail);
 	add_option('linkToEcardLang',$linkToEcardLang);
+	update_option('linkToEcardTextLink',$linkToEcardDefaultText);
+	update_option('linkToEcardTextEmail',$linkToEcardTextEmail);
+	update_option('linkToEcardLang',$linkToEcardLang);
 
 }
 
@@ -90,9 +93,5 @@ function linkToEcardTheContent($post){
 }
 
 
-function linkToEcardMakeLike($link){
-	str_replace(array('"',"'"),'',$link);
-	return '<a href="http://b0.ro/?url='.urlencode($link).'" target="_blank">Trimite poza ca felicitare de Craciun</a>';
-}
 
 ?>
