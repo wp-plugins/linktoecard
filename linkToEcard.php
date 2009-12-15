@@ -3,7 +3,7 @@
 Plugin Name: LinkToEcard
 Plugin URI: http://LinkToEcard.com/wordpress-plugin
 Description: Mazgalici
-Version: 1.02
+Version: 1.03
 Author: Mazgalici
 */
 
@@ -72,8 +72,9 @@ function linkToEcardAdmin(){
 }
 
 function linkToEcardInstall(){
-	include('_config.php');
-	global $linkToEcardDefaultText,$linkToEcardTextEmail,$linkToEcardLang;
+	$linkToEcardDefaultText='<center><table><tr><td valign="middle"><img src="http://messengerinvisible.com/ecard.gif" border="0"></td><td valign="middle">Send this picture as an ecard</td></table></center>';
+$linkToEcardTextEmail='Check this site [url]!';
+$linkToEcardLang='en';
 
 	add_option('linkToEcardTextLink',$linkToEcardDefaultText);
 	add_option('linkToEcardTextEmail',$linkToEcardTextEmail);
