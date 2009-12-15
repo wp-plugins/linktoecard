@@ -73,14 +73,12 @@ function linkToEcardAdmin(){
 
 function linkToEcardInstall(){
 	include('_config.php');
-
+	global $linkToEcardDefaultText,$linkToEcardTextEmail,$linkToEcardLang;
 
 	add_option('linkToEcardTextLink',$linkToEcardDefaultText);
 	add_option('linkToEcardTextEmail',$linkToEcardTextEmail);
 	add_option('linkToEcardLang',$linkToEcardLang);
-	update_option('linkToEcardTextLink',$linkToEcardDefaultText);
-	update_option('linkToEcardTextEmail',$linkToEcardTextEmail);
-	update_option('linkToEcardLang',$linkToEcardLang);
+	
 
 }
 
