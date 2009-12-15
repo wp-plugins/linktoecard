@@ -3,7 +3,7 @@
 Plugin Name: LinkToEcard
 Plugin URI: http://LinkToEcard.com/wordpress-plugin
 Description: Mazgalici
-Version: 1.0
+Version: 1.01
 Author: Mazgalici
 */
 
@@ -83,7 +83,7 @@ function linkToEcardInstall(){
 
 function linkToEcardTheContent($post){
 
-	$post=preg_replace('|(<img.+?src="([^ ]+)".+?>)|','$0<br><a target="_blank" href="http://linkToEcard.com/?u=$2&l='.get_option('linkToEcardLang').'&t='.urlencode(get_option('linkToEcardTextEmail')).'">'.stripslashes(get_option('linkToEcardTextLink')).'</a>',$post);
+	$post=preg_replace('|(<img.+?src="([^ ]+)".+?>)|','$0</a><br><a target="_blank" href="http://linkToEcard.com/?u=$2&l='.get_option('linkToEcardLang').'&t='.urlencode(get_option('linkToEcardTextEmail')).'" style="text-decoration:none;border:none">'.stripslashes(get_option('linkToEcardTextLink')).'</a>',$post);
 
 
 	return $post;

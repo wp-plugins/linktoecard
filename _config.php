@@ -1,6 +1,6 @@
 <?php
 
-$linkToEcardDefaultText='<b><img src="http://www.sfzc.org/images/email-icon.gif" border="0"> Send this picture as an ecard</b>';
+$linkToEcardDefaultText='<center><table><tr><td valign="middle"><img src="http://messengerinvisible.com/ecard.gif" border="0"></td><td valign="middle">Send this picture as an ecard</td></table></center>';
 $linkToEcardTextEmail='Check this site [url]!';
 $linkToEcardLang='en';
 
