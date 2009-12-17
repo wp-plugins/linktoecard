@@ -2,8 +2,8 @@
 /*
 Plugin Name: LinkToEcard
 Plugin URI: http://LinkToEcard.com/wordpress-plugin
-Description: Mazgalici
-Version: 1.2.0
+Description: Every image from you blog can me sent as an ecard
+Version: 1.2.1
 Author: Mazgalici
 */
 
