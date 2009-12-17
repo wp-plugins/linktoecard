@@ -3,7 +3,7 @@
 Plugin Name: LinkToEcard
 Plugin URI: http://LinkToEcard.com/wordpress-plugin
 Description: Mazgalici
-Version: 1.1.1
+Version: 1.1.2
 Author: Mazgalici
 */
 
@@ -48,14 +48,14 @@ function linkToEcardAdmin(){
 </div>';
 	$out.='<br><br><form action="" method="POST">';
 	$out.='<table>';
-	$out.='<tr><td>Text on your blog</td>';
+	$out.='<tr><td>HTML on your blog</td>';
 	$out.='<td><textarea name="textLink" style="width:450px">'.stripslashes(get_option('linkToEcardTextLink')).'</textarea></td></tr>';
-	$out.='<tr><td>Text on the emails</td>';
+	$out.='<tr><td>HTML text on the sent emails<br></td>';
 	$out.='<td><textarea name="textEmail" style="width:450px">'.stripslashes(get_option('linkToEcardTextEmail')).'</textarea></td></tr>';
 
 	$categories = get_categories();
 
-	$out.='<tr><td>Enable plugin for</td>';
+	$out.='<tr><td>Enable plugin for <br> <i>(CTRL+Click for multiple selection)<i/></td>';
 	$out.='<td><select name="categs[]" size="10" style="height:100px" multiple="multiple">';
 	$selectedCategs=explode(',',get_option('linkToEcardCategories'));
 	
