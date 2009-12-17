@@ -3,7 +3,7 @@
 Plugin Name: LinkToEcard
 Plugin URI: http://LinkToEcard.com/wordpress-plugin
 Description: Mazgalici
-Version: 1.1
+Version: 1.1.1
 Author: Mazgalici
 */
 
@@ -60,8 +60,9 @@ function linkToEcardAdmin(){
 	$selectedCategs=explode(',',get_option('linkToEcardCategories'));
 	
 	$selected='';
-		if (in_array('0',$selectedCategs)){
-			$selected='selected';
+	//print_r($selectedCategs);
+			if (in_array('0',$selectedCategs)){
+			$selected=' selected="selected" ';
 		}
 	$out.='<option '.$selected.' value="0">All categs</option>';
 
@@ -72,7 +73,7 @@ function linkToEcardAdmin(){
 		$selected='';
 
 		if (in_array($categories[$i]->cat_ID,$selectedCategs)){
-			$selected='selected';
+			$selected=' selected="selected" ';
 		}
 
 		$out.='<option '.$selected.' value="'.$categories[$i]->cat_ID.'">'.$categories[$i]->cat_name.'</option>';
@@ -109,7 +110,7 @@ function linkToEcardInstall(){
 	$linkToEcardDefaultText='<center><table><tr><td valign="middle"><img src="http://messengerinvisible.com/ecard.gif" border="0"></td><td valign="middle">Send this picture as an ecard</td></table></center>';
 	$linkToEcardTextEmail='Check this site [url]!';
 	$linkToEcardLang='en';
-	$linkToEcardCategories=0;
+	$linkToEcardCategories='0,';
 
 	add_option('linkToEcardTextLink',$linkToEcardDefaultText);
 	add_option('linkToEcardTextEmail',$linkToEcardTextEmail);
@@ -126,6 +127,7 @@ function linkToEcardTheContent($content){
 	$enabledCategories=explode(',',get_option('linkToEcardCategories'));
 	//print_r($enabledCategories);
 
+	//echo "dsdsdsds".print_r($enabledCategories);
 	if (in_array('0',$enabledCategories)){
 		$enabled=true;
 	}
