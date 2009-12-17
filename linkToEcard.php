@@ -3,7 +3,7 @@
 Plugin Name: LinkToEcard
 Plugin URI: http://LinkToEcard.com/wordpress-plugin
 Description: Mazgalici
-Version: 1.1.2
+Version: 1.2.0
 Author: Mazgalici
 */
 
@@ -24,45 +24,38 @@ function linkToEcardAdmin(){
 
 
 	if (isset($_POST['sent'])){
-		//print_r($_POST['categs']);
 		update_option('linkToEcardTextLink',trim($_POST['textLink']));
 		update_option('linkToEcardTextEmail',trim($_POST['textEmail']));
 		update_option('linkToEcardLang',trim($_POST['lang']));
-		
 		update_option('linkToEcardCategories',@implode(',',$_POST['categs']));
 
 	}
 
-	if (isset($_POST['reset'])){
-
-		update_option('linkToEcardTextLink',$linkToEcardDefaultText);
-		update_option('linkToEcardTextEmail',$linkToEcardTextEmail);
-		update_option('linkToEcardLang',$linkToEcardLang);
-		update_option('linkToEcardCategories',$linkToEcardCategories);
-
-	}
 
 
 	$out='<div class="wrap">
-	<h2>linkToEcard settings</h2>
+	<h2>Link to ecard settings</h2>
 </div>';
 	$out.='<br><br><form action="" method="POST">';
 	$out.='<table>';
 	$out.='<tr><td>HTML on your blog</td>';
 	$out.='<td><textarea name="textLink" style="width:450px">'.stripslashes(get_option('linkToEcardTextLink')).'</textarea></td></tr>';
-	$out.='<tr><td>HTML text on the sent emails<br></td>';
+	$out.='<tr><td>HTML on the emails sent <br>
+		<i><small>A good place to advertise your site</small></i>
+	</td>';
 	$out.='<td><textarea name="textEmail" style="width:450px">'.stripslashes(get_option('linkToEcardTextEmail')).'</textarea></td></tr>';
 
-	$categories = get_categories();
+	$categories = get_categories(array('hide_empty'=>'false'));
 
-	$out.='<tr><td>Enable plugin for <br> <i>(CTRL+Click for multiple selection)<i/></td>';
+	$out.='<tr><td>Enable plugin for <br>
+		<i><small>CTRL+Click for multiple selection</small></i>
+	</td>';
 	$out.='<td><select name="categs[]" size="10" style="height:100px" multiple="multiple">';
 	$selectedCategs=explode(',',get_option('linkToEcardCategories'));
 	
 	$selected='';
-	//print_r($selectedCategs);
-			if (in_array('0',$selectedCategs)){
-			$selected=' selected="selected" ';
+		if (in_array('0',$selectedCategs)){
+			$selected='selected';
 		}
 	$out.='<option '.$selected.' value="0">All categs</option>';
 
@@ -73,7 +66,7 @@ function linkToEcardAdmin(){
 		$selected='';
 
 		if (in_array($categories[$i]->cat_ID,$selectedCategs)){
-			$selected=' selected="selected" ';
+			$selected='selected';
 		}
 
 		$out.='<option '.$selected.' value="'.$categories[$i]->cat_ID.'">'.$categories[$i]->cat_name.'</option>';
@@ -81,7 +74,9 @@ function linkToEcardAdmin(){
 	$out.='</select></td></tr>';
 	//print_r($categories);
 
-	$out.='<tr><td>Ecards form language</td>';
+	$out.='<tr><td>Ecards form language <br>
+		<i><small>More languages on request<small></i>
+	</td>';
 	$out.='<td><select name="lang">';
 
 	foreach ($linkToEcardLanguages as $linkToEcardKey=>$linkToEcardVal){
@@ -95,11 +90,11 @@ function linkToEcardAdmin(){
 
 	$out.=$outLang;
 	$out.='</select></td></tr>';
-	$out.="<tr><td></td><td align='right'><input type='submit' value='Update'></td>";
+	$out.="<tr><td  colspan='2' align='right'><input type='submit' value='  Update  '></td>";
 	$out.='</table>';
 	$out.='<input type="hidden" name="sent" value="1"> </form>';
-
-	$out.='<br><form action="" method="POST"><input type="submit" value="Reset to default values"><input type="hidden" name="reset" value="1"></form>';
+			
+	$out.='<br><br><br><small><i>Contact me: <a href="mailto:fcmazgalici@yahoo.com">fcmazgalici@yahoo.com</a></small></i>';	
 	echo $out;
 
 }
@@ -110,7 +105,7 @@ function linkToEcardInstall(){
 	$linkToEcardDefaultText='<center><table><tr><td valign="middle"><img src="http://messengerinvisible.com/ecard.gif" border="0"></td><td valign="middle">Send this picture as an ecard</td></table></center>';
 	$linkToEcardTextEmail='Check this site [url]!';
 	$linkToEcardLang='en';
-	$linkToEcardCategories='0,';
+	$linkToEcardCategories=0;
 
 	add_option('linkToEcardTextLink',$linkToEcardDefaultText);
 	add_option('linkToEcardTextEmail',$linkToEcardTextEmail);
@@ -127,7 +122,6 @@ function linkToEcardTheContent($content){
 	$enabledCategories=explode(',',get_option('linkToEcardCategories'));
 	//print_r($enabledCategories);
 
-	//echo "dsdsdsds".print_r($enabledCategories);
 	if (in_array('0',$enabledCategories)){
 		$enabled=true;
 	}
