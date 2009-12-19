@@ -3,7 +3,7 @@
 Plugin Name: Link to ecard
 Plugin URI: http://LinkToEcard.com/wordpress-plugin
 Description: Every image from you blog can be sent as an ecard
-Version: 1.3.1
+Version: 1.3.3
 Author: Mazgalici
 */
 
@@ -99,12 +99,12 @@ function linkToEcardAdmin(){
 	<i><small>Ex: 11,23,45</small></i>
 	</td><td><input type="text" name="posts" value="'.get_option('linkToEcardPosts').'" style="width:450px" ></td></tr>';
 
-/*
+
 	$out.='<tr><td>Enable only for interior pages</td><td><input type="checkbox" name="onlyOnInteriorPages" ';
 	if (get_option('linkToEcardOnlyOnInteriorPages')==1){
 		$out.=' checked ';
 	}
-	$out.='> </td></tr>';*/
+	$out.='> </td></tr>';
 
 	$out.='<tr><td>Ecards form language <br>
 		<i><small>More languages on request<small></i>
@@ -164,10 +164,10 @@ function linkToEcardTheContentPre($content){
 function linkToEcardTheContent($content){
 	global $post;
 
-	//echo "x".is_single($post->ID);
-	/*if (get_option('linkToEcardOnlyOnInteriorPages')==1 && is_single($post->ID)){
+//echo is_single();
+	if (get_option('linkToEcardOnlyOnInteriorPages')==1 && is_single()!=1){
 		return $content;
-	}*/
+	}
 	
 	$categories=get_the_category();
 	$tags=get_the_tags();
