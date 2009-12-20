@@ -2,7 +2,7 @@
 Contributors: Mazgalici
 Tags: ecards, greeting cards, images
 Requires at least: 2.3
-Tested up to: 2.8.6
+Tested up to: 2.9
 Stable tag: 1.3
 
 Any image from your blog can be sent as an ecard with this plugin. 
