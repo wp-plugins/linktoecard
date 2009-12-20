@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Link to ecard
-Plugin URI: http://LinkToEcard.com/wordpress-plugin
+Plugin URI: http://clickTocard.com/wordpress-plugin
 Description: Every image from you blog can be sent as an ecard
-Version: 1.3.4
+Version: 1.3.5
 Author: Mazgalici
 */
 
@@ -221,7 +221,7 @@ function linkToEcardTheContent($content){
 
 
 	if ($enabled){
-		$content=preg_replace('|(<!-- --><img.+?src="([^ ]+)".+?>)|','$0</a><br><a target="_blank" href="http://linkToEcard.com/?u=$2&l='.get_option('linkToEcardLang').'&t='.urlencode(get_option('linkToEcardTextEmail')).'" style="text-decoration:none;border:none">'.stripslashes(get_option('linkToEcardTextLink')).'</a>',$content);
+		$content=preg_replace('|(<!-- --><img.+?src="([^ ]+)".+?>)|','$0</a><br><a target="_blank" href="http://clickToEcard.com/send/?u=$2&l='.get_option('linkToEcardLang').'&t='.urlencode(get_option('linkToEcardTextEmail')).'" style="text-decoration:none;border:none">'.stripslashes(get_option('linkToEcardTextLink')).'</a>',$content);
 	}
 
 	return $content;
