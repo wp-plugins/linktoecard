@@ -3,7 +3,7 @@
 Plugin Name: Link to ecard
 Plugin URI: http://clickTocard.com/wordpress-plugin
 Description: Every image from you blog can be sent as an ecard
-Version: 1.3.6
+Version: 1.3.7
 Author: Mazgalici
 */
 
