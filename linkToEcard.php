@@ -228,5 +228,4 @@ function linkToEcardTheContent($content){
 }
 
 
-
 ?>
