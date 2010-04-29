@@ -8,7 +8,8 @@ $linkToEcardLang='en';
 $linkToEcardLanguages=array(
 'English'=>'en',
 'German'=>'de',
-'Romanian'=>'ro'
+'Romanian'=>'ro',
+'Spanish'=>'es',
 );
 
 
